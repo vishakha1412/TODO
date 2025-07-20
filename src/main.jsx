@@ -18,7 +18,7 @@ import { About } from './components/About.jsx'
           
           <Route path='/add' element={<AddData/>}/>
            <Route path='/update/:id' element={<Update/>}/>
-           <Route path='/about' element={<About/>}/>
+           <Route path='/about' element={<About/>}/>s
       </Route>
     ])
   )

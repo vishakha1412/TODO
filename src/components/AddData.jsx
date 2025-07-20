@@ -23,7 +23,7 @@ const createUser=async()=>{
         method:'Post',
         body:JSON.stringify({title,date,time})
     })
-   response= await response.json();
+   const data= await response.json();
    
 }
 const maxWords = 20;

@@ -10,13 +10,15 @@ const Update = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
          
         <div className="text-xl font-bold tracking-wide">
-          📝 To-Do List
+          📝 AuraList 
+
         </div>
 
         
         <div className="space-x-6 hidden md:flex">
-          <NavLink to="tasks" className="hover:text-indigo-200 transition">Tasks</NavLink>
-           <NavLink to="completed" className="hover:text-indigo-200 transition">Completed</NavLink>
+          
+           <NavLink to="add" className="hover:text-indigo-200 transition">Create</NavLink> 
+           <NavLink to="tasks" className="hover:text-indigo-200 transition">Tasks</NavLink> 
           <NavLink to="about" className="hover:text-indigo-200 transition">About</NavLink>
         </div>
 
@@ -55,9 +57,9 @@ const Update = () => {
       {/* Mobile Dropdown Menu */}
       {isOpen && (
         <div className="md:hidden px-4 pb-4 space-y-2 bg-indigo-500">
+           <NavLink to="add" className="hover:text-indigo-200 transition">Create</NavLink> 
           <NavLink to="/tasks" className="block hover:text-indigo-200">Tasks</NavLink>
-          <NavLink to="/completed" className="block hover:text-indigo-200">Completed</NavLink>
-          <NavLink to="/about" className="block hover:text-indigo-200">About</NavLink>
+           <NavLink to="/about" className="block hover:text-indigo-200">About</NavLink>
         </div>
       )}
     </nav>

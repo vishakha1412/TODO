@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router';
 
 const User = () => {
     const[Todo,addTodo]=useState([' ']);
+  
+    
+     
     const navigate=useNavigate();
     const url='http://localhost:3000/users'
     useEffect(()=>{
@@ -24,7 +27,7 @@ const User = () => {
         method:'delete',
        
     })
-   response= await response.json();
+   const data= await response.json();
    navigate('/tasks')
 
 
@@ -34,6 +37,33 @@ const User = () => {
         console.log(id);
        navigate(`/update/${id}`);
     }
+    
+ 
+ const handleDone=(id)=>{
+    const updatedTodo = Todo.map(item => {
+      if (item.id === id) {
+        return { ...item, done: true }; // Assuming you want to mark it as done
+      }
+      return item;
+    });
+    addTodo(updatedTodo);
+    // Optionally, you can also update the backend here
+    
+  console.log(updatedTodo)
+   
+  
+ 
+   
+    
+  }
+
+   
+ 
+
+     
+     
+    
+  
   return (
     <>
     <div className='min-h-screen bg-linear-to-r from-cyan-500 to-blue-500 p-10'  >
@@ -45,10 +75,12 @@ const User = () => {
     {Todo.map((item) => (
       <div  className="bg-white/20 bg-opacity-40 backdrop-blur-lg border border-white border-opacity-30 p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 object-fill">
 
-        <h3 className="text-xl font-semibold text-white overflow-clip">{item.title}</h3>
+        <h3 className="text-xl font-semibold text-white">{item.title}</h3>
         <p className="text-white mt-2">{item.date}</p>
         <p className="text-white mt-1">{item.time}</p>
          <div className="mt-4 flex gap-4">
+    
+     
     <button
       onClick={() => handleDelete(item.id)}
       className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium transition"
@@ -61,10 +93,18 @@ const User = () => {
     >
       Update
     </button>
+     
+    <button   onClick={() =>handleDone(item.id)} className={`bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium transition 
+      ${item.done ? 'bg-pink-400' : 'bg-green-400'}
+       
+    `}
+    >{item.done?'Done':'Mark done'}</button>
+     
+  </div>
   </div>
 
 
-      </div>
+      
     ))}
 
 
